@@ -8,7 +8,8 @@ export async function getCurrentUserFromHeaders(h: Headers) {
 }
 
 export async function checkAccessToExperience(userId: string, experienceId: string) {
-  const res = await fetch(`${process.env.INTERNAL_API_BASE}/access/check`, {
+  // In production, this would call your own backend or Whop API.
+  const res = await fetch(`${process.env.INTERNAL_API_BASE || ''}/api/access/check`, {
     method: 'POST',
     body: JSON.stringify({ userId, experienceId }),
     headers: { 'content-type': 'application/json' }

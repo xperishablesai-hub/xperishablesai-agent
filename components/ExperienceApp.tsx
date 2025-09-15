@@ -1,13 +1,18 @@
 'use client';
 import { useState } from 'react';
 import GetAccess from './GetAccess';
+import Inbox from './Inbox';
+import Agents from './Agents';
+import KnowledgeBase from './KnowledgeBase';
+import Analytics from './Analytics';
+import Settings from './Settings';
 
 const TABS = [
-  { key: 'inbox', label: 'Inbox' },
-  { key: 'agents', label: 'Agents' },
-  { key: 'kb', label: 'Knowledge Base' },
-  { key: 'analytics', label: 'Analytics' },
-  { key: 'settings', label: 'Settings' }
+  { key: 'inbox', label: 'Inbox', component: Inbox },
+  { key: 'agents', label: 'Agents', component: Agents },
+  { key: 'kb', label: 'Knowledge Base', component: KnowledgeBase },
+  { key: 'analytics', label: 'Analytics', component: Analytics },
+  { key: 'settings', label: 'Settings', component: Settings }
 ];
 
 export default function ExperienceApp({ paywalled, experienceId }: { paywalled?: boolean; experienceId: string }) {
@@ -20,6 +25,7 @@ export default function ExperienceApp({ paywalled, experienceId }: { paywalled?:
       </div>
     );
   }
+  const CurrentTab = TABS.find(t => t.key === tab)?.component ?? Inbox;
   return (
     <div className="min-h-screen flex flex-col">
       <nav className="flex gap-4 border-b p-4">
@@ -34,11 +40,7 @@ export default function ExperienceApp({ paywalled, experienceId }: { paywalled?:
         ))}
       </nav>
       <main className="flex-1 p-6">
-        {tab === 'inbox' && <div>Inbox (MVP placeholder)</div>}
-        {tab === 'agents' && <div>Agents (MVP placeholder)</div>}
-        {tab === 'kb' && <div>Knowledge Base (MVP placeholder)</div>}
-        {tab === 'analytics' && <div>Analytics (MVP placeholder)</div>}
-        {tab === 'settings' && <div>Settings (MVP placeholder)</div>}
+        <CurrentTab />
       </main>
     </div>
   );

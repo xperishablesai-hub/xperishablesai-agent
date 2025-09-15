@@ -46,10 +46,10 @@ A production-ready Whop app for customer support and AI agents, built from the o
    WHOP_WEBHOOK_SECRET=whsec_xxxxxxxxx
    NEXT_PUBLIC_WHOP_COMPANY_ID=biz_xxxxxxxxx
    NEXT_PUBLIC_WHOP_AGENT_USER_ID=user_xxxxxxxxx
+   NEXT_PUBLIC_EXPERIENCE_ID=exp_xxxxxxxxx
    NEXT_PUBLIC_STARTER_PLAN_ID=plan_starter_xxx
    NEXT_PUBLIC_PRO_PLAN_ID=plan_pro_xxx
    NEXT_PUBLIC_SCALE_PLAN_ID=plan_scale_xxx
-   NEXT_PUBLIC_EXPERIENCE_ID=exp_xxx
    ```
 
 5. **Run locally (proxied for Whop iFrame):**
@@ -71,14 +71,6 @@ A production-ready Whop app for customer support and AI agents, built from the o
    - Set all env vars in dashboard
    - Switch dashboard from Local to Production when ready
 
-## Directory Structure
-
-- `app/experience/[experienceId]/`: Main app, all features experience-scoped
-- `components/`: UI components
-- `lib/whop.ts`: Whop entitlement helpers
-- `app/actions/`: Server actions (e.g., createCheckoutSession)
-- `app/providers.tsx`: WhopIframeSdkProvider wrapper
-
 ## Acceptance Tests
 
 - App loads in Whop iFrame via dev proxy, paywall if no access
@@ -87,6 +79,8 @@ A production-ready Whop app for customer support and AI agents, built from the o
 - Quotas enforced per tier
 - Webhook validates and increments usage/credits
 - Inbox, Agents, KB, Analytics, Settings pages render
+- `/api/webhook` returns 200 to GET (test ping)
+- `/api/agent/answer` returns a stubbed answer
 
 ---
 
