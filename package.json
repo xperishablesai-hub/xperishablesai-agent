@@ -4,9 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "whop-proxy --command 'next dev'",
+    "dev": "whop-proxy --command \"next dev --turbopack\"",
     "build": "next build",
-    "start": "next start -p 3000"
+    "start": "next start -p 3000",
+    "dev:noproxy": "next dev"
   },
   "dependencies": {
     "@whop-apps/iframe": "0.0.1-canary.117",
