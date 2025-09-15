@@ -20,10 +20,15 @@ export default function ExperienceApp({ paywalled, experienceId }: { paywalled?:
   if (paywalled) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#0a0f1c] via-[#10182a] to-[#0a0f1c] text-white">
-        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_8px_#00f0ff]">
-          Unlock Support & AI Agents
-        </h2>
-        <GetAccess planId={process.env.NEXT_PUBLIC_STARTER_PLAN_ID!} experienceId={experienceId} />
+        <div className="rounded-2xl bg-[#10182a]/80 border border-cyan-900/40 shadow-[0_4px_32px_0_rgba(0,255,255,0.10)] p-10 flex flex-col items-center animate-fade-in">
+          <h2 className="text-3xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_12px_#00f0ff]">
+            Unlock Support & AI Agents
+          </h2>
+          <p className="text-cyan-100/80 mb-6 text-center max-w-md">
+            Get instant access to next-gen support and AI features. Purchase a plan to unlock the full experience.
+          </p>
+          <GetAccess planId={process.env.NEXT_PUBLIC_STARTER_PLAN_ID!} experienceId={experienceId} />
+        </div>
       </div>
     );
   }
@@ -37,10 +42,11 @@ export default function ExperienceApp({ paywalled, experienceId }: { paywalled?:
             className={`px-5 py-2 rounded-lg font-semibold transition-all duration-200
               ${
                 tab === t.key
-                  ? 'bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 text-[#0a0f1c] shadow-[0_0_16px_#00f0ff]'
-                  : 'bg-[#0a0f1c]/60 text-cyan-100 hover:bg-cyan-900/30'
+                  ? 'bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 text-[#0a0f1c] shadow-[0_0_16px_#00f0ff] scale-105'
+                  : 'bg-[#0a0f1c]/60 text-cyan-100 hover:bg-cyan-900/30 hover:shadow-[0_0_8px_#00f0ff55]'
               }`}
             onClick={() => setTab(t.key)}
+            style={{ letterSpacing: '0.04em' }}
           >
             {t.label}
           </button>

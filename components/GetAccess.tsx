@@ -13,5 +13,19 @@ export default function GetAccess({ planId, experienceId }:{ planId:string; expe
     await iframeSdk.inAppPurchase(checkoutSession);
     setBusy(false);
   }
-  return <button onClick={buy} disabled={busy} className="px-4 py-2 bg-blue-600 text-white rounded">{busy ? 'Loading...' : 'Get Access'}</button>;
+  return (
+    <button
+      onClick={buy}
+      disabled={busy}
+      className={`px-8 py-3 rounded-xl font-bold text-lg transition-all duration-200
+        bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300
+        text-[#0a0f1c] shadow-[0_0_24px_#00f0ff55]
+        hover:shadow-[0_0_48px_#00f0ff99] hover:scale-105
+        focus:outline-none focus:ring-2 focus:ring-cyan-400
+        disabled:opacity-60 disabled:cursor-not-allowed`}
+      style={{ letterSpacing: '0.05em' }}
+    >
+      {busy ? 'Loading...' : 'Get Access'}
+    </button>
+  );
 }
